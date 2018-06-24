@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Detail;
+use App\Usuario;
 
-class DetailController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DetailController extends Controller
      */
     public function index()
     {
-        $details = Detail::all();
-        return response()->json($details,200);
+        $usuarios = \App\Usuario::all();
+        return response()->json($usuarios, 200);
     }
 
     /**
@@ -25,7 +25,7 @@ class DetailController extends Controller
      */
     public function create()
     {
-        return view('detail.create');
+        return view('usuario.create');
     }
 
     /**
@@ -36,12 +36,10 @@ class DetailController extends Controller
      */
     public function store(Request $request)
     {
-        $detalle = new Detail();
-        $detalle->genero= $request->input('genero');
-        $detalle->fecha_nacimiento= $request->input('fecha_nacimiento');
-        $detalle->situacionSentimental= $request->input('situacionSentimental');
-        $detalle->fk_usuario_id= $request->input('fk_usuario_id');
-        $detalle->save();
+        $usuario = new Usuario();
+        $usuario->email=$request->input('email');
+        $usuario->pass=$request->input('pass');
+        $usuario->save();
     }
 
     /**
@@ -50,9 +48,9 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Detail $detalle)
+    public function show(Usuario $usuarios)
     {
-        return response()->json($detalle, 200);
+        return response()->json($usuarios, 200);
     }
 
     /**
@@ -73,14 +71,12 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Usuario $usuario)
     {
-        $detalle->genero= $request->input('genero');
-        $detalle->fecha_nacimiento= $request->input('fecha_nacimiento');
-        $detalle->situacionSentimental= $request->input('situacionSentimental');
-        $detalle->fk_usuario_id= $request->input('fk_usuario_id');
-        $detalle->save();
-        return response()->json($detalle, 200);
+        $usuario->email = $request->input("email");
+        $usuario->pass = $request->input("pass");
+        $product->save();
+        return response()->json($product, 200);
     }
 
     /**
@@ -89,8 +85,9 @@ class DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Usuario $usuario)
     {
-        //
+        $usuario->delete();
+        return response()->json($usuario, 204);
     }
 }

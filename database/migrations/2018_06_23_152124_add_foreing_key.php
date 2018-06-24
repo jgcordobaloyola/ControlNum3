@@ -13,10 +13,10 @@ class AddForeingKey extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-        });
+        /*Schema::table('details', function (Blueprint $table) {
+            $table->integer('fk_user_id')->unsigned();
+            $table->foreign('fk_user_id')->references('id')->on('users');
+        });*/
     }
 
     /**

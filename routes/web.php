@@ -16,3 +16,19 @@ Route::get('/', function () {
 });
 
 Route::get('list/','DetailController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//usuarios
+Route::get('listUsuario/','UsuarioController@index');
+Route::get('CreateUsuario/','UsuarioController@create');
+Route::get('EditUsuario/','UsuarioController@update');
+Route::get('DeleteUsuario/','UsuarioController@destroy');
+
+
+//detalles
+Route::get('listDetail/','DetailController@index');
+Route::get('CreateDetail/','DetailController@create');
+Route::get('EditDetail/','DetailController@update');
+Route::get('DeleteDetail/','DetailController@destroy');
