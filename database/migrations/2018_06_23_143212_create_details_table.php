@@ -18,6 +18,7 @@ class CreateDetailsTable extends Migration
             $table->char('genero',1);
             $table->char('Situacion_Sintimental',20);
             $table->date('fecha_nacimiento');
+            $table->integer('user_id')->references('id')->on('user');
             $table->timestamps();
         });
     }
